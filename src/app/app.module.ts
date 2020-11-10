@@ -7,6 +7,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { EventosComponent } from './components/eventos/eventos.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
+import { AltaEventoComponent } from './components/alta-evento/alta-evento.component';
+import { ModificarEventoComponent } from './components/modificar-evento/modificar-evento.component';
+import { EliminarEventoComponent } from './components/eliminar-evento/eliminar-evento.component';
+
 
 @NgModule({
   declarations: [
@@ -15,6 +19,10 @@ import { MainMenuComponent } from './components/main-menu/main-menu.component';
     InicioComponent,
     EventosComponent,
     MainMenuComponent,
+    AltaEventoComponent,
+    ModificarEventoComponent,
+    EliminarEventoComponent,
+    
   ],
   imports: [
     BrowserModule,
