@@ -1,4 +1,22 @@
-.list-group{
-    width: 10%;
-    text-align: center;
+.container{
+    margin-top:40px;
 }
+
+.eliminar{
+    margin-top:40px;
+}
+
+textarea{ 
+    width: 700px; 
+    min-width:400px;
+    max-width:700px; 
+  
+    height:200px; 
+    min-height:50px;  
+    max-height:70px;
+  }
+
+  #correcto, #inCorrecto, #textocorto{
+    color:red;
+  }
+
