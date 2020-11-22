@@ -1,5 +1,5 @@
 <div class="container">
-  <form (submit)="addUser(vName, vEmail, vLocalidad, vDescripcion)">
+  <form #itemForm="ngForm" (submit)="addUser(vName, vEmail, vLocalidad, vDescripcion)" (ngSubmit)="onFormSubmit(itemForm)">
 
     <div class="col-md-3 form-group">
       <h3>Alta evento</h3>
@@ -7,15 +7,15 @@
     
     <div class="col-md-3 form-group">
       <label>Nombre del evento</label>
-      <input type="text" #vName="" class="form-control" placeholder="Evento">
+      <input type="text" #vName="" class="form-control" placeholder="Evento" ngModel name="name">
     </div>
     <div class="col-md-3 form-group">
       <label>Localidad</label>
-      <input type="text" #vLocalidad="" class="form-control" placeholder="Localidad">
+      <input type="text" #vLocalidad="" class="form-control" placeholder="Localidad" ngModel name="localidad">
     </div>
     <div class="col-md-3 form-group">
       <label>Correo Electronico</label>
-      <input type="email" name="email" #vEmail class="form-control" placeholder="Correo">
+      <input type="email" #vEmail class="form-control" placeholder="Correo" ngModel name="email">
       <small class="form-text text-muted">Recuerde en poner la @.</small>
     </div>
 
@@ -26,7 +26,7 @@
 
     <div class="col-md-5 form-group">
       <label for="">Descripcion</label>
-      <textarea class="form-control" #vDescripcion name="" id="" placeholder="Escribe tu mensaje"></textarea>
+      <textarea class="form-control" #vDescripcion id="" placeholder="Escribe tu mensaje" ngModel name="descripcion"></textarea>
       <small class="form-text text-muted">Descripción debe de tener por lo menos 2 carácteres.</small>
   </div>
 
@@ -43,20 +43,8 @@
     <label class="form-check-label">Validar condiciones legales.</label>
   </div>
     
+  <button type="submit" class="btn btn-primary" [disabled]="itemForm.invalid">Submit</button>
+
   </form>
-
-
-  <div class="eliminar">
-
-    <h3>Mostrar eventos para eliminar</h3>
-    <label for="text" #vmostrarvacio=""></label>
-    <ul>
-      <li *ngFor="let user of users">
-          {{user}} <button class="btn btn-danger" type="submit" (click)="deleteUser(user)">Borrar</button>
-      </li>
-    </ul>
-    
-  </div>
-
 
 </div>

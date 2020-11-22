@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { EventomodelComponent } from 'src/app/components/eventomodel/eventomodel.component';
 
 @Component({
   selector: 'app-eventos',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventoComponent implements OnInit {
 
+  newEventomodel: EventomodelComponent = null;
   AruedaEmail ='@';
   mostrarInfo="";
   users: string[] = [];
+
+  @Output() characterEvent: EventEmitter<EventomodelComponent> = new EventEmitter<EventomodelComponent>();
 
   addUser(vName, vEmail, vLocalidad, vDescripcion) {
     this.users.push(vName.value);
@@ -40,18 +44,22 @@ export class EventoComponent implements OnInit {
 
   }
  
+  onFormSubmit(itemForm: any): void {
 
-  deleteUser(user) {
 
-    this.users
-    for(let i=0; i < this.users.length; i++) {
-      if(user == this.users[i]){
-        this.users.splice(i, 1);
-      }
-    }
+    this.newEventomodel = new EventomodelComponent(itemForm.controls.name.value,
+                                      itemForm.controls.localidad.value,
+                                      itemForm.controls.email.value,
+                                      itemForm.controls.descripcion.value,);
+
+    console.log(this.newEventomodel);
+
+
+    this.characterEvent.emit(this.newEventomodel);
   }
 
   ngOnInit(): void {
   }
+
 
 }
